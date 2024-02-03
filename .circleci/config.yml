@@ -37,6 +37,17 @@ jobs:
           name: "Say hello"
           command: "ls /tmp/woekspace/file.txt"
 
+  say-hello3:
+    # Specify the execution environment. You can specify an image from Docker Hub or use one of our convenience images from CircleCI's Developer Hub.
+    # See: https://circleci.com/docs/configuration-reference/#executor-job
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - checkout
+      - run:
+          name: "secret"
+          command: 'if [[ "${SECRET}" = "1234567890" ]]; then echo "OK"; else exit 255; fi'
+
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
 workflows:
@@ -46,4 +57,5 @@ workflows:
       - say-hello2:
           requires:
             - say-hello
+      - say-hello3
 
