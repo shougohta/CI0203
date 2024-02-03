@@ -31,11 +31,11 @@ jobs:
     # See: https://circleci.com/docs/configuration-reference/#steps
     steps:
       - checkout
+      - attach_workspace:
+          at: /tmp/woekspace
       - run:
           name: "Say hello"
           command: "ls /tmp/woekspace/file.txt"
-      - attach_workspace:
-          at: /tmp/woekspace
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
