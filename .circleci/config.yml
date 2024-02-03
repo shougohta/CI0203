@@ -46,6 +46,8 @@ jobs:
       - checkout
       - run:
           name: "secret"
+          environment:
+            SECRET: 1234567890
           command: 'if [[ "${SECRET}" = "1234567890" ]]; then echo "OK"; else exit 255; fi'
 
 # Orchestrate jobs using workflows
